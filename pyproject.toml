@@ -1,5 +1,5 @@
 [project]
-name = "herobot-agents"
+name = "herobot.agents"
 description = "HeroBot AI agents"
 authors = [
     {name = "Aashish Loknath Panigrahi",email = "n00bgineer@protonmail.com"}
