@@ -11,20 +11,54 @@
 Here are the agents that power HeroBot's prototype:
 
 ```
-HeroBot/ApolloAgent
-Named after the Greek God of truth & light, this AI agent helps to evaluate your proficiency on any topic that you've learnt. The best way to really know whether you really know something is 
+Name: ApolloAgent
+Description: Named after the Greek God of truth & light, this AI agent helps to evaluate your proficiency on any topic that you've learnt. The best way to really know whether you really know something is 
 Address:
 Link:
 
-HeroBot/AthenaAgent
-Named after the Greek Goddess of knowledge & wisdom, this AI agent helps to answer all your queries & also generates a custom knowledge graph & roadmap for any subject you want to learn.
+Name: AthenaAgent
+Description: Named after the Greek Goddess of knowledge & wisdom, this AI agent helps to answer all your queries & also generates a custom knowledge graph & roadmap for any subject you want to learn.
 Address:
 Link:
 
-HeroBot/HermesAgent
-Named after the Messenger of Greek Gods, this AI agent helps with actively communicating with users regarding their roadmap, etc.
+Name: HermesAgent
+Description: Named after the Messenger of Greek Gods, this AI agent helps with actively communicating with users regarding their roadmap, etc.
 Address:
 Link
+```
+
+## Authorization
+
+Since every agent in HeroBot is actively interacting with resources such as language model inference endpoints, databases, etc, so it raises the need of being able to monitor, authorize and ratelimit the usage of agents & to achieve this, HeroBot uses authorization tokens. 
+
+To programmatically access and use HeroBot agents, follow through these steps: 
+1. Register with [HeroBot](https://herobot.site).
+2. Visit [this page](https://herobot.site/tokens) to generate an authorization token.
+2. Click on `Add token` button, which will allow you to generate new tokens.
+3. Please copy the token & add it to the message body, without which the request would fail:
+```
+{
+  token: <TOKEN_VALUE>, // Authorization token
+  ...                   // Other parts of message body
+}
+```
+**Note:** If you're accessing these agents from the application, then you don't need to generate the token. 
+
+## Usage
+
+### **AthenaAgent**
+```
+WIP
+```
+
+### **ApolloAgent**
+```
+WIP
+```
+
+### **HermesAgent**
+```
+WIP
 ```
 
 ## Installation & Usage
@@ -41,19 +75,23 @@ The following is the directory structure of the HeroBot agents:
 
 ```
 /
-    /index.py                 # SERVER ENTRY POINT
-    /scripts                  # DIRECTORY CONTAINING SCRIPTS
-        /deploy.sh            # SCRIPT FOR GENERATING ZIP FILE FOR UPLOADING TO AWS LAMBDA FUNCTIONS
-    /agents                   # DIRECTORY CONTAINING AGENTS
-      /athena_agent.py        # SOURCE CODE FOR AthenaAgent
-      /apollo_agent.py        # SOURCE CODE FOR ApolloAgent
-      /hermes_agent.py        # SOURCE CODE FOR HermesAgent
-    /models                   # DIRECTORY CONTAINING MODELS USED BY THE AGENTS
-      /athena_model.py        # MODELS USED BY AthenaAgent
-      /apollo_model.py        # MODELS USED BY ApolloAgent
-      /hermes_model.py        # MODELS USED BY HermesAgent
-    /handlers                 # DIRECTORY CONTAINING HANDLERS USED BY THE AGENTS
-      /athena_handlers.py     # METHODS & HANDLERS USED BY AthenaAgent
-      /apollo_handlers.py     # METHODS & HANDLERS USED BY ApolloAgent
-      /hermes_handlers.py     # METHODS & HANDLERS USED BY HermesAgent
+    /index.py                 # Server entry point
+
+    /scripts                  # Directory containing scripts
+        /deploy.sh            # Script for generating zip file for uploading to AWS Lambda functions
+
+    /agents                   # Directory containing agents
+      /athena_agent.py        # Source code for AthenaAgent
+      /apollo_agent.py        # Source code for ApolloAgent
+      /hermes_agent.py        # Source code for HermesAgent
+
+    /models                   # Directory containing models used by the agents
+      /athena_model.py        # Models used by AthenaAgent
+      /apollo_model.py        # Models used by ApolloAgent
+      /hermes_model.py        # Models used by HermesAgent
+
+    /handlers                 # Directory containing handlers used by the agents
+      /athena_handlers.py     # Methods & handlers used by AthenaAgent
+      /apollo_handlers.py     # Methods & handlers used by ApolloAgent
+      /hermes_handlers.py     # Methods & handlers used by HermesAgent
 ```
