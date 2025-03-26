@@ -1,2 +1,4 @@
 .env
 __pycache__
+lambda_deployment.zip
+build
