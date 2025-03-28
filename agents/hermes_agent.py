@@ -9,9 +9,9 @@ if not hermes_agent_seed:
 
 HermesAgent = Agent(
     name="HermesAgent",
-    port=8001,
+    port=8003,
     seed=hermes_agent_seed,
-    endpoint="http://localhost:8001/agent/apollo",
+    endpoint="http://localhost:8001/agent/hermes",
 )
 
 @HermesAgent.on_event("startup")

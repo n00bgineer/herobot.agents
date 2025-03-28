@@ -9,9 +9,9 @@ if not apollo_agent_seed:
 
 ApolloAgent = Agent(
     name="ApolloAgent",
-    port=8001,
+    port=8002,
     seed=apollo_agent_seed,
-    endpoint="http://localhost:8001/agent/apollo",
+    endpoint="http://localhost:8002/agent/apollo",
 )
 
 @ApolloAgent.on_event("startup")
