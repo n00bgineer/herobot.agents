@@ -1,9 +1,7 @@
-import os
-from dotenv import load_dotenv
 from uagents import Agent, Context
+from env_config import env
 
-load_dotenv()
-athena_agent_seed = os.environ.get("ATHENA_AGENT_SEED")
+athena_agent_seed = env.athena_agent_seed
 if not athena_agent_seed:
   raise Exception("ERROR: ATHENA_AGENT_SEED NOT SET IN .env FILE")
 

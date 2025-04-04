@@ -1,9 +1,7 @@
-import os
-from dotenv import load_dotenv
 from uagents import Agent, Context
+from env_config import env
 
-load_dotenv()
-apollo_agent_seed = os.environ.get("APOLLO_AGENT_SEED")
+apollo_agent_seed = env.apollo_agent_seed
 if not apollo_agent_seed:
   raise Exception("ERROR: APOLLO_AGENT_SEED NOT SET IN .env FILE")
 

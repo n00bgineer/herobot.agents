@@ -1,9 +1,7 @@
-import os
-from dotenv import load_dotenv
 from uagents import Agent, Context
+from env_config import env
 
-load_dotenv()
-hermes_agent_seed = os.environ.get("HERMES_AGENT_SEED")
+hermes_agent_seed = env.hermes_agent_seed
 if not hermes_agent_seed:
   raise Exception("ERROR: HERMES_AGENT_SEED NOT SET IN .env FILE")
 
