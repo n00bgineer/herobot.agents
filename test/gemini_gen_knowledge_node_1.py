@@ -17,6 +17,17 @@ def call_gemini_api(subject, category, excluded):
     """ CALLS THE GEMINI API AND HANDLES RETRIES ON FAILURE """
     client = genai.Client(api_key=env["gemini_api_key"])
 
+    # SETTING SYSTEM MESSAGE AND OUTPUT STRUCTURE
+    generate_content_config = types.GenerateContentConfig(
+        response_mime_type="application/json",
+        response_schema=genai.types.Schema(
+            type=genai.types.Type.ARRAY,
+            items=genai.types.Schema(type=genai.types.Type.STRING),
+        ),
+        system_instruction=[types.Part.from_text(text=config["system_prompt"])],
+    )
+
+    # SETTING USER PROMPT
     contents = [
         types.Content(
             role="user",
@@ -29,15 +40,6 @@ def call_gemini_api(subject, category, excluded):
             ],
         ),
     ]
-
-    generate_content_config = types.GenerateContentConfig(
-        response_mime_type="application/json",
-        response_schema=genai.types.Schema(
-            type=genai.types.Type.ARRAY,
-            items=genai.types.Schema(type=genai.types.Type.STRING),
-        ),
-        system_instruction=[types.Part.from_text(text=config["system_prompt"])],
-    )
 
     try:
         response = client.models.generate_content_stream(
